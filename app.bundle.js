@@ -62,8 +62,8 @@ async function viewProductos(){
   const list = wrap.querySelector('#list'); list.innerHTML = '<div class="muted">Cargando...</div>';
   try{
     const items = await callGAS('listProducts');
-    list.innerHTML = items.map(p => <div class="card"><b>${p.name}</b><div class="muted">Base: $${Number(p.basePrice||0).toFixed(4)} por ${p.baseUnit}</div></div>).join('');
-  }catch(e){ list.innerHTML = '<div class="muted">Error: '+e.message+'</div>'; console.error(e); }
+    list.innerHTML = items.map(p => `  <div class="card">    <b>${p.name}</b>    <div class="muted">      Base: $${Number(p.basePrice||0).toFixed(4)} por ${p.baseUnit}    </div>  </div>
+`).join('');  }catch(e){ list.innerHTML = '<div class="muted">Error: '+e.message+'</div>'; console.error(e); }
 
   return wrap;
 }
